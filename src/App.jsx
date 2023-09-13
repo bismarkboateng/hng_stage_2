@@ -1,4 +1,4 @@
-import { Navbar, DescriptionBox } from "./components"
+import { Navbar, DescriptionBox, MovieList } from "./components"
 import './App.css'
 import { Poster } from "./assets"
 
@@ -13,6 +13,10 @@ function App() {
       />
       <Navbar />
       <DescriptionBox />
+      
+      <main className="mt-[15%]">
+        <MovieList />
+      </main>
     </div>
   )
 }
