@@ -1,0 +1,8 @@
+export { default as Tv } from "./tv.png"
+export { default as HamIcon } from "./Icon.png"
+export { default as Poster } from "./Poster.png"
+export { default as searchIcon } from "./searchIcon.png"
+export { default as Menu } from "./Menu.png"
+export { default as imdb } from "./imdb.png"
+export { default as Tomato } from "./Tomato.png"
+export { default as playIcon } from "./playIcon.png"
