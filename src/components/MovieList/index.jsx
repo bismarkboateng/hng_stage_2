@@ -1,7 +1,32 @@
 import { ChevronRight } from "../../assets"
-import { MovieCard } from ".."
+import { MovieCard, Spinner } from ".."
+import { useEffect, useState } from "react"
+import { Error } from ".."
+// import { options } from "../../utils/options"
 
 export default function index() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [movies, setMovies] = useState()
+
+
+  useEffect(() => {
+
+    setIsLoading(true)
+    fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=6d4571647e555bda7f37c0dd98c01206")
+    .then(response => response.json())
+    .then(response => {
+      setMovies(response)
+      setIsLoading(false)
+    })
+    
+    .catch(err => setError(err))
+  }, [])
+
+  if(isLoading) return <Spinner message="Loading movies..."/>
+
+  if(error) return <Error />
+
   return (
     <section className="w-10/12 mx-auto">
       <div className="flex flex-row justify-between items-center">
@@ -12,13 +37,8 @@ export default function index() {
         </div>
       </div>
 
-      <div className="mt-[40px] flex flex-wrap gap-[80px] border-2 border-red-500">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+      <div className="mt-[40px] grid grid-cols-4 gap-[80px]">
+        { movies?.results.map((movie) => (<MovieCard movie={movie} key={movie.id} />))}
       </div>
     </section>  
   )

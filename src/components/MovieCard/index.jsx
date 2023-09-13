@@ -1,13 +1,15 @@
 import { Movie_Image } from "../../assets"
 import { Rating } from ".."
 
-export default function index() {
+export default function index({ movie }) {
+  console.log(movie)
+  
   const genre="Action, Adventure, Drama"
 
   return (
     <div className="w-[250px] h-[490px]">
       <img
-        src={Movie_Image}
+        src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
         alt="movie"
       />
       <div className="text-gray-400 font-bold text-xs leading-[15.62px] mt-3">USA, 2016 - Current</div>

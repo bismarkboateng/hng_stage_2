@@ -17,6 +17,7 @@ function App() {
       <main className="mt-[15%]">
         <MovieList />
       </main>
+      
     </div>
   )
 }
